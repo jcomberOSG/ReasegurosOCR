@@ -70,7 +70,7 @@ class MultipartPostHandler(urllib2.BaseHandler):
                          v_vars.append((key, value))
             except TypeError:
                 systype, value, traceback = sys.exc_info()
-                raise TypeError, "not a valid non-string sequence or mapping object", traceback
+                raise TypeError("not a valid non-string sequence or mapping object" + traceback)
 
             if len(v_files) == 0:
                 data = urllib.urlencode(v_vars, doseq)
@@ -117,7 +117,7 @@ def main():
     import tempfile, sys
 
     validatorURL = "http://validator.w3.org/check"
-    opener = urllib2.build_opener(MultipartPostHandler)
+    opener = urllib.request.build_opener(MultipartPostHandler)
 
     def validateFile(url):
         temp = tempfile.mkstemp(suffix=".html")

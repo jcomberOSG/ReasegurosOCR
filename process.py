@@ -22,7 +22,7 @@ if "ReasegurosOCR" in os.environ:
 	processor.ApplicationId = os.environ["ReasegurosOCR"]
 
 if "Lzkn0dpJqrLHTUV7besocZ0z" in os.environ:
-	processor.Password = os.environ["Lzkn0dpJqrLHTUV7besocZ0z "]
+	processor.Password = os.environ["Lzkn0dpJqrLHTUV7besocZ0z"]
 
 # Proxy settings
 if "http_proxy" in os.environ:
@@ -70,27 +70,27 @@ def recognizeFile( filePath, resultFilePath, language, outputFormat ):
 
 
 
-	
-parser = argparse.ArgumentParser( description="Recognize a file via web service" )
-parser.add_argument( 'sourceFile' )
-parser.add_argument( 'targetFile' )
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser( description="Recognize a file via web service" )
+	parser.add_argument( 'sourceFile' )
+	parser.add_argument( 'targetFile' )
 
-parser.add_argument( '-l', '--language', default='English', help='Recognition language (default: %(default))' )
-group = parser.add_mutually_exclusive_group()
-group.add_argument( '-txt', action='store_const', const='txt', dest='format', default='txt' )
-group.add_argument( '-pdf', action='store_const', const='pdfSearchable', dest='format' )
-group.add_argument( '-rtf', action='store_const', const='rtf', dest='format' )
-group.add_argument( '-docx', action='store_const', const='docx', dest='format' )
-group.add_argument( '-xml', action='store_const', const='xml', dest='format' )
+	parser.add_argument( '-l', '--language', default='English', help='Recognition language (default: %(default))' )
+	group = parser.add_mutually_exclusive_group()
+	group.add_argument( '-txt', action='store_const', const='txt', dest='format', default='txt' )
+	group.add_argument( '-pdf', action='store_const', const='pdfSearchable', dest='format' )
+	group.add_argument( '-rtf', action='store_const', const='rtf', dest='format' )
+	group.add_argument( '-docx', action='store_const', const='docx', dest='format' )
+	group.add_argument( '-xml', action='store_const', const='xml', dest='format' )
 
-args = parser.parse_args()
+	args = parser.parse_args()
 
-sourceFile = args.sourceFile
-targetFile = args.targetFile
-language = args.language
-outputFormat = args.format
+	sourceFile = args.sourceFile
+	targetFile = args.targetFile
+	language = args.language
+	outputFormat = args.format
 
-if os.path.isfile( sourceFile ):
-	recognizeFile( sourceFile, targetFile, language, outputFormat )	
-else:
-	print "No such file: %s" % sourceFile
+	if os.path.isfile( sourceFile ):
+		recognizeFile( sourceFile, targetFile, language, outputFormat )	
+	else:
+		print "No such file: %s" % sourceFile
