@@ -43,7 +43,9 @@ class AbbyyOnlineSdk:
 	def ProcessImage( self, filePath, settings ):
 		urlParams = urllib.urlencode({
 			"language" : settings.Language,
-			"exportFormat" : settings.OutputFormat
+			"exportFormat" : settings.OutputFormat,
+			"readBarcodes" : False,
+			"imageSource" : "scanner"
 			})
 		requestUrl = self.ServerUrl + "processImage?" + urlParams
 

@@ -15,7 +15,7 @@ class Window(QWidget):
 			otro = os.getcwd() + "/" + otro
 			print otro
 			try:
-	 			recognizeFile(filename, otro, "Spanish", "docx")	
+	 			recognizeFile(filename, otro, "English", "docx")	
 	 			# os.rename(aux, os.getcwd() + "/" + otro)
 	 		except Exception as B:
 	 			print B
